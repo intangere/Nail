@@ -1,0 +1,43 @@
+-----Function test-----
+
+echo "Hello world!"
+proc test = 
+  a = 1
+  b = 2
+  c := a + b
+  echo c
+  a = 2
+  echo c
+end
+test()
+
+-----AST----- ;To execute this we would just roll over the AST node ;To compile this we take the AST node and roll over it with the compiler
+
+ECHO Hello world! <------- #1
+
+FUNC TEST <--------- #2
+  a EQUAL 1 <------ #4
+  b EQUAL 2 <------- #5
+  c DEPENDS a, b BIND  <------#7    <----- This AST node is stored into the test() procedure. It is not evaluated until runtime
+    a ADD b <------- #6
+  ECHO c <------ #8
+  a EQUAL 1 <------- #9
+  ECHO c <------ #10
+CALL test <-------- #3
+
+-----Variables and operators-----
+a = 1
+b = 5 + 7 / a - 2 + 3
+c := a * 5 + b / 4
+
+-----AST-----
+a EQUAL 1 <------ #1
+b EQUAL 
+  5 ADD <------ #3
+    7 DIV a <------ #2
+      SUB 2 <------- #4
+        ADD 3 <------- #5
+c DEPENDS a BIND <-------- #9
+  a MUL 5 <------- #7
+    ADD <-------- #8
+      b DIV 4 <------- #6

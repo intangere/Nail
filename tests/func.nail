@@ -1,0 +1,12 @@
+fn test
+  a = 1
+  b = 2
+  d = 3
+  c := a + b + d
+  echo c
+  d = 1
+  echo c
+fn d
+ echo a
+test()
+d()

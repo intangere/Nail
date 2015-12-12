@@ -1,0 +1,6 @@
+a = 1 + 10 / 5 - 3 + 8 * 2
+b = 4
+c = a + b - 7
+echo c
+d := c - b
+echo d

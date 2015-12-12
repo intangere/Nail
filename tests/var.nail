@@ -1,0 +1,11 @@
+a = 5
+b = 6
+c = 7
+d = a * 5 + c
+q := a + b + a
+echo q
+a = 4
+echo q
+b = -1 * 5
+echo b
+echo q
